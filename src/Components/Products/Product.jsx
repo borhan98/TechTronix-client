@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   const { _id, name, brandName, price, type, rating, image } = product;
@@ -32,8 +33,15 @@ const Product = ({ product }) => {
       </div>
       <p className="text-center">Price: {parseFloat(price).toFixed(2)}$</p>
       <div className="grid grid-cols-2 gap-2 mt-2">
-        <button className="btn btn-neutral btn-sm">Update</button>
-        <button className="btn btn-neutral btn-sm">Details</button>
+        <Link to={"/"} className="btn btn-neutral btn-sm">
+          <button>Update</button>
+        </Link>
+        <Link
+          to={`/products/${brandName.toLowerCase()}/${_id}`}
+          className="btn btn-neutral btn-sm"
+        >
+          <button>Details</button>
+        </Link>
       </div>
     </div>
   );

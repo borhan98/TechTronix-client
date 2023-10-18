@@ -1,4 +1,5 @@
 import AddProduct from "../Components/AddProduct/AddProduct";
+import Details from "../Components/Details/Details";
 import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
 import Products from "../Components/Products/Products";
@@ -23,6 +24,11 @@ const routes = [
             path: "/products/:brandName",
             element: <Products />,
             loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}`)
+        },
+        {
+            path: "/products/:brandName/:id",
+            element: <Details />,
+            loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}/${params.id}`)
         },
         {
             path: "/register",
