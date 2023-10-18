@@ -1,8 +1,6 @@
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
 
 const AddProduct = () => {
-  const brands = useLoaderData();
   const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,7 +11,6 @@ const AddProduct = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const description = form.description.value;
-    const newBrand = { brandName };
     const newProduct = {
       name,
       brandName,
@@ -38,20 +35,6 @@ const AddProduct = () => {
           form.reset();
         }
       });
-
-    // POST brand to database
-    const isExist = brands.find((brand) => brand.brandName.toLowerCase() === brandName.toLowerCase());
-    if (!isExist) {
-      fetch("http://localhost:5000/brands", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(newBrand),
-      })
-        .then((res) => res.json())
-        .then(() => {
-        //   console.log(data);
-        });
-    }
   };
 
   return (
