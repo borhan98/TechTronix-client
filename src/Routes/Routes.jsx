@@ -10,12 +10,12 @@ const routes = [
       children: [
         {
             path: "/",
-            element: <Home />
+            element: <Home />,
+            loader: () => fetch("./brands.json")
         },
         {
             path: "/addproduct",
-            element: <AddProduct />,
-            loader: () => fetch("http://localhost:5000/brands")
+            element: <AddProduct />
         }
       ]
     },
