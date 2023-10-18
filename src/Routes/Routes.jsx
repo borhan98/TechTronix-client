@@ -1,5 +1,8 @@
 import AddProduct from "../Components/AddProduct/AddProduct";
 import Home from "../Components/Home/Home";
+import Login from "../Components/Login/Login";
+import Products from "../Components/Products/Products";
+import Register from "../Components/Register/Register";
 import Root from "../Components/Root/Root";
 
 
@@ -10,12 +13,24 @@ const routes = [
       children: [
         {
             path: "/",
-            element: <Home />,
-            loader: () => fetch("./brands.json")
+            element: <Home />
         },
         {
             path: "/addproduct",
             element: <AddProduct />
+        },
+        {
+            path: "/products/:brandName",
+            element: <Products />,
+            loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}`)
+        },
+        {
+            path: "/register",
+            element: <Register />
+        },
+        {
+            path: "/login",
+            element: <Login />
         }
       ]
     },

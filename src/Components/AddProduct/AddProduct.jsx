@@ -5,7 +5,7 @@ const AddProduct = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const brandName = form.brand.value;
+    const brandName = form.brand.value.toLowerCase();
     const price = form.price.value;
     const type = form.type.value;
     const rating = form.rating.value;

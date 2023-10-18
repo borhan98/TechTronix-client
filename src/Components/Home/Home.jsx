@@ -1,11 +1,15 @@
-import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import Brands from "../Brands/Brands";
-import Footer from "../Footer/Footer";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const brands = useLoaderData();
-  console.log(brands);
+  const [brands, setBrands] = useState([])
+
+  useEffect(() => {
+    fetch('./brands.json')
+    .then(res => res.json())
+    .then(data => setBrands(data))
+  }, [])
   return (
     <div>
       <Banner />
@@ -25,7 +29,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
