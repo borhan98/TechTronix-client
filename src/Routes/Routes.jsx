@@ -5,6 +5,7 @@ import Login from "../Components/Login/Login";
 import Products from "../Components/Products/Products";
 import Register from "../Components/Register/Register";
 import Root from "../Components/Root/Root";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 const routes = [
@@ -18,7 +19,7 @@ const routes = [
         },
         {
             path: "/addproduct",
-            element: <AddProduct />
+            element: <PrivateRoute><AddProduct /></PrivateRoute>
         },
         {
             path: "/products/:brandName",
@@ -27,7 +28,7 @@ const routes = [
         },
         {
             path: "/products/:brandName/:id",
-            element: <Details />,
+            element: <PrivateRoute><Details /></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}/${params.id}`)
         },
         {

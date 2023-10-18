@@ -1,6 +1,21 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+
+  // Handle logout
+  const logout = () => {
+    logoutUser()
+    .then(() => {
+      console.log("User logged out");
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   const menuLinks = (
     <>
       <li>
@@ -59,11 +74,13 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
+              {user && (
+                <li>
+                  <a>{user.displayName}</a>
+                </li>
+              )}
               <li>
-                <a>Username</a>
-              </li>
-              <li>
-                <Link to={"/login"}>Login</Link>
+                {!user ? <Link to={"/login"}>Login</Link> : <a onClick={logout}>Logout</a>}
                 <Link to={"/register"}>Register</Link>
               </li>
             </ul>

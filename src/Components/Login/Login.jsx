@@ -1,7 +1,32 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // handle login user
+  const handleLogin = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    
+    // Login user 
+    loginUser(email, password)
+    .then(result => {
+      console.log(result.user);
+      navigate(location.state);
+    })
+    .catch(() => {
+      toast.error("Invalid Email or Password!")
+    })
+  }
+
     return (
         <div className="container mx-auto">
       <div className="py-10 bg-base-200 px-20">
@@ -9,7 +34,7 @@ const Login = () => {
           <h1 className="text-5xl font-bold text-center mb-6">Login now</h1>
         </div>
         <div className="card max-w-lg mx-auto shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -40,7 +65,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-neutral">Login</button>
+              <button type="submit" className="btn btn-neutral">Login</button>
             </div>
             <p>
             <small>Don&#39;t have any account? </small>
