@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -9,7 +10,7 @@ const Header = () => {
   const logout = () => {
     logoutUser()
       .then(() => {
-        console.log("User logged out");
+        toast.success("User logged out");
       })
       .catch((err) => {
         console.log(err);

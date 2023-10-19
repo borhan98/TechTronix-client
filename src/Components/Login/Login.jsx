@@ -2,33 +2,43 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
-
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   // handle login user
-  const handleLogin = event => {
+  const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    
-    // Login user 
+
+    // Login user
     loginUser(email, password)
-    .then(() => {
-      toast.success("Successfully logged in")
-      navigate(location.state);
+      .then(() => {
+        toast.success("Successfully logged in");
+        navigate(location.state);
+      })
+      .catch(() => {
+        toast.error("Invalid Email or Password!");
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+    .then(result => {
+      console.log(result.user);
     })
-    .catch(() => {
-      toast.error("Invalid Email or Password!")
+    .then(err => {
+      console.log(err.message);
     })
   }
 
-    return (
-        <div className="container mx-auto">
+  return (
+    <div className="container mx-auto">
       <div className="py-10 bg-base-200 px-20">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold text-center mb-6">Login now</h1>
@@ -65,17 +75,30 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-neutral">Login</button>
+              <button type="submit" className="btn btn-neutral">
+                Login
+              </button>
             </div>
             <p>
-            <small>Don&#39;t have any account? </small>
-            <small className="underline"><Link to={"/register"}>Register Now</Link></small>
+              <small>Don&#39;t have any account? </small>
+              <small className="underline">
+                <Link to={"/register"}>Register Now</Link>
+              </small>
             </p>
           </form>
+            <div className="flex flex-col px-8 pb-8">
+              <p className="text-center mb-2">Or Sign In With</p>
+              <button onClick={handleGoogleSignIn} className="btn btn-sm btn-neutral flex items-center">
+                <span>
+                  <FcGoogle />
+                </span>
+                <span>Google</span>
+              </button>
+            </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Login;
