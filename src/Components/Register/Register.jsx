@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const [passError, setPassError] = useState('');
+  const [passError, setPassError] = useState("");
   const { createUser, updateUser } = useContext(AuthContext);
 
   // handle register new user
@@ -16,18 +16,32 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    if (password.length < 6) {
+      return setPassError(
+        "Your password should be at least 6 characters long!"
+      );
+    } else if (!/(?=.*[A-Z])/.test(password)) {
+      return setPassError(
+        "Password must be contain at least one uppercase character!"
+      );
+    } else if (!/(?=.*[!@#$%^&*])/.test(password)) {
+      return setPassError(
+        "Password must be contain at least one special character!"
+      );
+    }
+
     // create user
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
         toast.success("successfully registered");
+        setPassError("");
         updateUser(name, photo)
-          .then(() => {
-            
-          })
+          .then(() => {})
           .catch((err) => {
             console.log(err);
           });
+        form.reset();
       })
       .catch((err) => {
         console.error(err);
@@ -90,7 +104,7 @@ const Register = () => {
                 required
               />
             </div>
-            <small> {passError} </small>
+            <small className="text-red-500"> {passError} </small>
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-neutral">
                 Register

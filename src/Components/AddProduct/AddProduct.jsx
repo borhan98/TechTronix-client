@@ -93,12 +93,14 @@ const AddProduct = () => {
                 </label>
                 <select name="type" className="input input-bordered w-full">
                   <option value="Laptop">Laptop</option>
-                  <option value="Phone">Phone</option>
+                  <option value="SmartPhone">Smartphone</option>
                   <option value="Headphone">Headphone</option>
                   <option value="Camera">Camera</option>
                   <option value="Smart Wacth">Smart Wacth</option>
                   <option value="Tablet">Tablet</option>
                   <option value="Drone">Drone</option>
+                  <option value="Earbuds">Earbuds</option>
+                  <option value="Monitor">Monitor</option>
                 </select>
               </div>
               {/* Rating */}

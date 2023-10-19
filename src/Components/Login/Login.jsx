@@ -18,8 +18,8 @@ const Login = () => {
     
     // Login user 
     loginUser(email, password)
-    .then(result => {
-      console.log(result.user);
+    .then(() => {
+      toast.success("Successfully logged in")
       navigate(location.state);
     })
     .catch(() => {

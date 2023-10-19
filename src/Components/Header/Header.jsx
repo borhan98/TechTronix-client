@@ -8,13 +8,13 @@ const Header = () => {
   // Handle logout
   const logout = () => {
     logoutUser()
-    .then(() => {
-      console.log("User logged out");
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+      .then(() => {
+        console.log("User logged out");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const menuLinks = (
     <>
@@ -67,7 +67,11 @@ const Header = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src="https://i.ibb.co/JCVpNzQ/user.jpg" />
+                {user ? (
+                  <img src={user?.photoURL} />
+                ) : (
+                  <img src="https://i.ibb.co/JCVpNzQ/user.jpg" />
+                )}
               </div>
             </label>
             <ul
@@ -80,7 +84,11 @@ const Header = () => {
                 </li>
               )}
               <li>
-                {!user ? <Link to={"/login"}>Login</Link> : <a onClick={logout}>Logout</a>}
+                {!user ? (
+                  <Link to={"/login"}>Login</Link>
+                ) : (
+                  <a onClick={logout}>Logout</a>
+                )}
                 <Link to={"/register"}>Register</Link>
               </li>
             </ul>
