@@ -1,15 +1,16 @@
 import Banner from "../Banner/Banner";
 import Brands from "../Brands/Brands";
 import { useEffect, useState } from "react";
+import Testimonial from "../Testimonial/Testimonial";
 
 const Home = () => {
-  const [brands, setBrands] = useState([])
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    fetch('./brands.json')
-    .then(res => res.json())
-    .then(data => setBrands(data))
-  }, [])
+    fetch("./brands.json")
+      .then((res) => res.json())
+      .then((data) => setBrands(data));
+  }, []);
   return (
     <div>
       <Banner />
@@ -28,6 +29,15 @@ const Home = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="my-20">
+        <div className="max-w-2xl mx-auto mb-6 text-center">
+          <h2 className="text-3xl font-bold">Customer Reviews</h2>
+          <p className="text-sm md:text-base mt-2">
+            Discover what our satisfied customers have to say about their experiences with our products and services. Read real feedback and make informed decisions
+          </p>
+        </div>
+        <Testimonial />
       </div>
     </div>
   );

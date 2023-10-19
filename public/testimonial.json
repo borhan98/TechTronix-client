@@ -1,0 +1,33 @@
+[
+    {
+      "id": "1",
+      "name": "Alice Johnson",
+      "opinion": "I had a fantastic experience with their customer service. They were quick to resolve my issue and were very polite.",
+      "img": "https://i.ibb.co/g4V2vc9/client6.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Bob Smith",
+      "opinion": "Their product exceeded my expectations. It's a great value for the price.",
+      "img": "https://i.ibb.co/PcKktgN/client1.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Charlie Brown",
+      "opinion": "I've been a loyal customer for years, and they consistently deliver high-quality products with exceptional customer support.",
+      "img": "https://i.ibb.co/M1byJfF/client2.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Eve Mitchell",
+      "opinion": "Their return policy is hassle-free, and they always make it easy to exchange or return items if I'm not satisfied.",
+      "img": "https://i.ibb.co/z6nDPgr/client3.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Emma Wilson",
+      "opinion": "The staff is very knowledgeable and always willing to help. It's a pleasure doing business with them.",
+      "img": "https://i.ibb.co/W2SRZDV/client5.jpg"
+    }
+  ]
+  
