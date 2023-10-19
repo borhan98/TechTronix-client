@@ -1,7 +1,11 @@
 import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
-const AddProduct = () => {
-  const handleAddProduct = (event) => {
+const UpdateProduct = () => {
+  const loadedToUpdate = useLoaderData();
+  const { _id, name, price, rating, image } = loadedToUpdate;
+
+  const handleUpdateProduct = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -10,27 +14,25 @@ const AddProduct = () => {
     const type = form.type.value;
     const rating = form.rating.value;
     const image = form.image.value;
-    const description = form.description.value;
-    const newProduct = {
+    const updatedProduct = {
       name,
       brandName,
       price,
       type,
       rating,
       image,
-      description,
     };
 
     // Post new product to database
-    fetch("http://localhost:5000/products", {
-      method: "POST",
+    fetch(`http://localhost:5000/products/${brandName}/${_id}`, {
+      method: "PUT",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(newProduct),
+      body: JSON.stringify(updatedProduct),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          toast.success("Product addedd successfully");
+        if (data.modifiedCount) {
+          toast.success("Product Updated successfully");
           form.reset();
         }
       });
@@ -40,8 +42,8 @@ const AddProduct = () => {
     <div>
       <div className="container mx-auto">
         <div className="bg-base-200 py-16 px-28">
-        <h3 className="text-center text-3xl mb-6">Add New Product</h3>
-          <form onSubmit={handleAddProduct}>
+          <h3 className="text-center text-3xl mb-6">Update Product: {name}</h3>
+          <form onSubmit={handleUpdateProduct}>
             <div className="grid md:grid-cols-2 gap-4">
               {/* Name */}
               <div className="form-control">
@@ -52,6 +54,7 @@ const AddProduct = () => {
                   <input
                     type="text"
                     name="name"
+                    defaultValue={name}
                     placeholder="Enter name"
                     className="input input-bordered w-full "
                   />
@@ -80,6 +83,7 @@ const AddProduct = () => {
                   <input
                     type="number"
                     name="price"
+                    defaultValue={price}
                     placeholder="Enter price"
                     className="input input-bordered w-full "
                   />
@@ -111,6 +115,7 @@ const AddProduct = () => {
                   <input
                     type="number"
                     name="rating"
+                    defaultValue={rating}
                     placeholder="Enter rating"
                     className="input input-bordered w-full "
                     max={5}
@@ -127,6 +132,7 @@ const AddProduct = () => {
                   <input
                     type="text"
                     name="image"
+                    defaultValue={image}
                     placeholder="Enter image URL"
                     className="input input-bordered w-full "
                   />
@@ -134,26 +140,12 @@ const AddProduct = () => {
               </div>
             </div>
             <div>
-              {/* Description */}
-              <div className="form-control mt-4">
-                <label className="label">
-                  <span className="label-text">Description</span>
-                </label>
-                <label>
-                  <input
-                    type="text"
-                    name="description"
-                    placeholder="Enter description"
-                    className="input input-bordered w-full "
-                  />
-                </label>
-              </div>
-              {/* Add button */}
+              {/* Submit button */}
               <div className="mt-6">
                 <label>
                   <input
                     type="submit"
-                    value={"Add Product"}
+                    value={"Submit"}
                     className="input input-bordered w-full bg-[#2B3440] text-white border border-black btn hover:border hover:border-black hover:text-black"
                   />
                 </label>
@@ -166,4 +158,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

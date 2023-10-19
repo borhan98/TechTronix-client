@@ -6,6 +6,7 @@ import MyCart from "../Components/MyCart/MyCart";
 import Products from "../Components/Products/Products";
 import Register from "../Components/Register/Register";
 import Root from "../Components/Root/Root";
+import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
@@ -30,6 +31,11 @@ const routes = [
         {
             path: "/products/:brandName/:id",
             element: <PrivateRoute><Details /></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}/${params.id}`)
+        },
+        {
+            path: "/updateproduct/:brandName/:id",
+            element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}/${params.id}`)
         },
         {

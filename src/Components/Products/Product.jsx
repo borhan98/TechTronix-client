@@ -33,7 +33,7 @@ const Product = ({ product }) => {
       </div>
       <p className="text-center">Price: {parseFloat(price).toFixed(2)}$</p>
       <div className="grid grid-cols-2 gap-2 mt-2">
-        <Link to={"/"} className="btn btn-neutral btn-sm">
+        <Link to={`/updateproduct/${brandName.toLowerCase()}/${_id}`} className="btn btn-neutral btn-sm">
           <button>Update</button>
         </Link>
         <Link

@@ -56,7 +56,7 @@ const MyCart = () => {
               <hr />
               <div className="flex justify-between mt-4">
                 <span>Grand Total:</span>
-                <span>{(totalPrice - delivery).toFixed(2)}$</span>
+                <span>{(totalPrice + delivery).toFixed(2)}$</span>
               </div>
             </div>
           </div>
