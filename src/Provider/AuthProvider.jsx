@@ -12,19 +12,16 @@ const AuthProvider = ({children}) => {
 
     // Sign in with google
     const googleSignIn = () => {
-        // setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     // create new user
     const createUser = (email, password) => {
-        // setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // update user profile
     const updateUser = (name, photo) => {
-        // setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo
@@ -33,13 +30,11 @@ const AuthProvider = ({children}) => {
 
     // Login user
     const loginUser = (email, password) => {
-        // setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     // Logut user
     const logoutUser = () => {
-        // setLoading(true);
         return signOut(auth);
     }
 

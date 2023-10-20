@@ -41,13 +41,13 @@ const Testimonial = () => {
               </figure>
               <h3 className="text-center text-xl font-bold">{testimonial.name}</h3>
               <div className="flex justify-center gap-4 my-2">
-                <span className="p-2 cursor-pointer border-[#FF4A00] text-[#FF4A00] border rounded-full shadow-md text-xl">
+                <span className="p-1 md:p-2 cursor-pointer border-[#FF4A00] text-[#FF4A00] border rounded-full shadow-md text-base md:text-xl">
                   <FaFacebookF />
                 </span>
-                <span className="p-2 cursor-pointer border-[#FF4A00] text-[#FF4A00] border rounded-full shadow-md text-xl">
+                <span className="p-1 md:p-2 cursor-pointer border-[#FF4A00] text-[#FF4A00] border rounded-full shadow-md text-base md:text-xl">
                   <FaInstagram />
                 </span>
-                <span className="p-2 cursor-pointer border-[#FF4A00] text-[#FF4A00] border rounded-full shadow-md text-xl">
+                <span className="p-1 md:p-2 cursor-pointer border-[#FF4A00] text-[#FF4A00] border rounded-full shadow-md text-base md:text-xl">
                   <FaTwitter />
                 </span>
               </div>

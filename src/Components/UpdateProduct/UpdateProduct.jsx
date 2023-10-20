@@ -24,7 +24,7 @@ const UpdateProduct = () => {
     };
 
     // Post new product to database
-    fetch(`http://localhost:5000/products/${brandName}/${_id}`, {
+    fetch(`https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products/${brandName}/${_id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updatedProduct),
@@ -40,9 +40,9 @@ const UpdateProduct = () => {
 
   return (
     <div>
-      <div className="container mx-auto">
-        <div className="bg-base-200 py-16 px-28">
-          <h3 className="text-center text-3xl mb-6">Update Product: {name}</h3>
+      <div className="container mx-auto px-2 md:px-1 lg:px-0">
+        <div className="bg-base-200py-4 md:py-8 lg:py-16 px-2 md:px-10 lg:px-28">
+          <h3 className="text-center text-xl md:text-3xl mb-6">Update Product: <span className="font-semibold">{name}</span></h3>
           <form onSubmit={handleUpdateProduct}>
             <div className="grid md:grid-cols-2 gap-4">
               {/* Name */}

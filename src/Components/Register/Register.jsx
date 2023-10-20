@@ -2,10 +2,13 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Register = () => {
+  const [showPass, setShowPass] = useState(false);
   const [passError, setPassError] = useState("");
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
 
   // handle register new user
   const handleRegister = (event) => {
@@ -48,11 +51,22 @@ const Register = () => {
       });
   };
 
+  // Handle google Login
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        toast.success("Successfully logged in");
+      })
+      .then((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <div className="container mx-auto">
-      <div className="py-10 bg-base-200 px-20">
+      <div className="py-4 md:py-7 lg:py-10 bg-base-200 px-2 md:px-10 lg:px-20">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold text-center mb-6">Register now</h1>
+          <h1 className="text-xl md:text-3xl lg:text-5xl font-bold text-center mb-6">Register now</h1>
         </div>
         <div className="card max-w-lg mx-auto shadow-2xl bg-base-100">
           <form onSubmit={handleRegister} className="card-body">
@@ -96,13 +110,20 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="input input-bordered"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPass ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <span onClick={() => setShowPass(!showPass)} className="absolute right-1 top-3 text-xl md:text-2xl">
+                  {
+                    showPass ? <AiFillEyeInvisible /> : <AiFillEye />
+                  }
+                </span>
+              </div>
             </div>
             <small className="text-red-500"> {passError} </small>
             <div className="form-control mt-6">
@@ -117,6 +138,18 @@ const Register = () => {
               </small>
             </p>
           </form>
+          <div className="flex flex-col px-8 pb-8">
+            <p className="text-center mb-2">Or Sign In With</p>
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn btn-sm btn-neutral flex items-center"
+            >
+              <span>
+                <FcGoogle />
+              </span>
+              <span>Google</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

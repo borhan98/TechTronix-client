@@ -22,7 +22,7 @@ const AddProduct = () => {
     };
 
     // Post new product to database
-    fetch("http://localhost:5000/products", {
+    fetch("https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProduct),
@@ -38,8 +38,8 @@ const AddProduct = () => {
 
   return (
     <div>
-      <div className="container mx-auto">
-        <div className="bg-base-200 py-16 px-28">
+      <div className="container mx-auto px-2 md:px-1 lg:px-0">
+        <div className="bg-base-200 py-4 md:py-8 lg:py-16 px-2 md:px-10 lg:px-28">
         <h3 className="text-center text-3xl mb-6">Add New Product</h3>
           <form onSubmit={handleAddProduct}>
             <div className="grid md:grid-cols-2 gap-4">

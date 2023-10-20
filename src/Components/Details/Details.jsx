@@ -12,7 +12,7 @@ const Details = () => {
 
   // Handle add to cart
   const handleAddToCart = () => {
-    fetch('http://localhost:5000/cart', {
+    fetch('https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/cart', {
       method: "POST",
       headers: { "content-type": "application/json"},
       body: JSON.stringify(addProduct)
@@ -27,7 +27,7 @@ const Details = () => {
 
 
   return (
-    <div className="container mx-auto my-6">
+    <div className="container mx-auto px-2 md:px-1 lg:px-0 my-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div className="border p-4 rounded-lg flex flex-col items-center justify-center">
           <figure>
@@ -37,8 +37,8 @@ const Details = () => {
           <button onClick={handleAddToCart} className="btn btn-neutral w-full">Add to Cart</button>
         </div>
         <div className="border p-4 rounded-lg flex flex-col gap-2">
-          <h3 className="text-[#FF4A00] text-3xl"> ${parseFloat(price).toFixed(2)} </h3>
-          <p>Brand: {brandName} </p>
+          <h3 className="text-[#FF4A00] text-2xl md:text-3xl"> ${parseFloat(price).toFixed(2)} </h3>
+          <p className="capitalize">Brand: {brandName} </p>
           <p>Type: {type} </p>
           <div className="rating rating-sm flex gap-1 items-center">
             <span>Rating: ({rating})</span>
@@ -56,8 +56,8 @@ const Details = () => {
         </div>
       </div>
       <div>
-        <h3 className="text-3xl font-medium mb-2">Details aboout {name}</h3>
-        <p> {description} </p>
+        <h3 className="text-xl md:text-3xl font-medium mb-2">Details aboout {name}</h3>
+        <p className="text-xs md:text-base"> {description} </p>
       </div>
     </div>
   );

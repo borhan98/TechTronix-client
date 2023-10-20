@@ -12,8 +12,8 @@ const MyCart = () => {
     totalPrice += productPrice;
   }
   return (
-    <div className="container mx-auto my-10">
-      <h3 className="text-2xl font-semibold mb-6">
+    <div className="container mx-auto px-2 md:px-1 lg:px-0 my-4 md:my-10">
+      <h3 className="text-xl md:text-2xl font-semibold mb-6">
         Your products: {myProducts.length}
       </h3>
       <div>
@@ -40,7 +40,9 @@ const MyCart = () => {
                   <li key={product._id} className="grid grid-cols-10">
                     <span className="col-span-1">{index + 1}. </span>{" "}
                     <span className="col-span-6">{product.name}</span>{" "}
-                    <span className="col-span-3 text-right">{parseFloat(product.price).toFixed(2)}$</span>
+                    <span className="col-span-3 text-right">
+                      {parseFloat(product.price).toFixed(2)}$
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -54,9 +56,12 @@ const MyCart = () => {
                 <span>{delivery.toFixed(2)}$</span>
               </div>
               <hr />
-              <div className="flex justify-between mt-4">
+              <div className="flex justify-between mt-4 mb-8">
                 <span>Grand Total:</span>
                 <span>{(totalPrice + delivery).toFixed(2)}$</span>
+              </div>
+              <div className="ml-auto">
+                <button className="btn btn-sm btn-neutral w-full">Continue</button>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ const Brands = ({ brand }) => {
           <img src={brand_img} alt={brand_name} />
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 rounded-lg"></div>
         </figure>
-        <span className="absolute bottom-2 left-2 bg-[#FF4A00] text-white opacity-100 py-3 px-5 italic">
+        <span className="absolute bottom-2 left-2 bg-[#FF4A00] text-white opacity-100 py-1 md:py-3 px-3 md:px-5 text-sm md:text-base italic">
           {brand_name}
         </span>
         </Link>

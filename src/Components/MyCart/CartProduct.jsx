@@ -21,12 +21,11 @@ const CartProduct = ({ product, myProducts, setMyProducts }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your product has been deleted.", "success");
-        fetch(`http://localhost:5000/cart/${id}`, {
+        fetch(`https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/cart/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if (data.deletedCount) {
               const remainingProducts = myProducts.filter(
                 (product) => product._id !== id
@@ -39,9 +38,9 @@ const CartProduct = ({ product, myProducts, setMyProducts }) => {
   };
 
   return (
-    <div className="rounded-md p-4 grid grid-cols-3 gap-4 mb-4 bg-white">
+    <div className="rounded-md p-4 grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 bg-white">
       <figure className="w-full">
-        <img src={image} alt={name} />
+        <img className="max-w-[200px] mx-auto md:w-full" src={image} alt={name} />
       </figure>
       <div className="col-span-2 space-y-1">
         <h3 className="text-xl font-semibold">{name}</h3>

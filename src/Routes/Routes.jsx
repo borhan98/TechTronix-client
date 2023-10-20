@@ -19,7 +19,8 @@ const routes = [
       children: [
         {
             path: "/",
-            element: <Home />
+            element: <Home />,
+            loader: () => fetch('https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products')
         },
         {
             path: "/addproduct",
@@ -28,22 +29,22 @@ const routes = [
         {
             path: "/products/:brandName",
             element: <Products />,
-            loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}`)
+            loader: ({params}) => fetch(`https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products/${params.brandName}`)
         },
         {
             path: "/products/:brandName/:id",
             element: <PrivateRoute><Details /></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}/${params.id}`)
+            loader: ({params}) => fetch(`https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products/${params.brandName}/${params.id}`)
         },
         {
             path: "/updateproduct/:brandName/:id",
             element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/products/${params.brandName}/${params.id}`)
+            loader: ({params}) => fetch(`https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products/${params.brandName}/${params.id}`)
         },
         {
             path: "/cart",
             element: <PrivateRoute><MyCart /></PrivateRoute>,
-            loader: () => fetch("http://localhost:5000/cart")
+            loader: () => fetch("https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/cart")
         },
         {
             path: "/register",
