@@ -23,14 +23,14 @@ const Login = () => {
         navigate(location.state);
       })
       .catch(() => {
-        toast.error("Invalid Email or Password!");
+        toast.error("Wrong Email or Password!");
       });
   };
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-    .then(result => {
-      console.log(result.user);
+    .then(() => {
+      toast.success("Successfully logged in");
     })
     .then(err => {
       console.log(err.message);

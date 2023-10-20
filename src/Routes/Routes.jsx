@@ -1,5 +1,6 @@
 import AddProduct from "../Components/AddProduct/AddProduct";
 import Details from "../Components/Details/Details";
+import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
 import MyCart from "../Components/MyCart/MyCart";
@@ -13,6 +14,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const routes = [
     {
       path: "/",
+      errorElement: <ErrorPage /> ,
       element: <Root />,
       children: [
         {
