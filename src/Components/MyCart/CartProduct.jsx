@@ -21,7 +21,7 @@ const CartProduct = ({ product, myProducts, setMyProducts }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Deleted!", "Your product has been deleted.", "success");
-        fetch(`https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/cart/${id}`, {
+        fetch(`https://techtronix-server-n5ha8r90r-borhan-uddins-projects.vercel.app/cart/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

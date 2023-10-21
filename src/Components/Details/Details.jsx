@@ -12,7 +12,7 @@ const Details = () => {
 
   // Handle add to cart
   const handleAddToCart = () => {
-    fetch('https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/cart', {
+    fetch('https://techtronix-server-n5ha8r90r-borhan-uddins-projects.vercel.app/cart', {
       method: "POST",
       headers: { "content-type": "application/json"},
       body: JSON.stringify(addProduct)

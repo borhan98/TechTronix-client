@@ -22,7 +22,8 @@ const Login = () => {
     loginUser(email, password)
       .then(() => {
         toast.success("Successfully logged in");
-        navigate(location.state);
+        form.reset();
+        location.state ? navigate(location.state) : navigate("/");
       })
       .catch(() => {
         toast.error("Wrong Email or Password!");

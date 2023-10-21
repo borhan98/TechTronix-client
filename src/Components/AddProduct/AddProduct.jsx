@@ -22,7 +22,7 @@ const AddProduct = () => {
     };
 
     // Post new product to database
-    fetch("https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products", {
+    fetch("https://techtronix-server-n5ha8r90r-borhan-uddins-projects.vercel.app/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProduct),

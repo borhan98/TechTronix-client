@@ -1,8 +1,13 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2>Here is my website link</h2>
 
-Currently, two official plugins are available:
+- [Click here to visit "TechTronix"](https://techtronix-cc870.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>Here given some features of my website in the below:-</h2>
+
+- There is some dynamic pages and routes. To visit these, user must be logged in.
+- User can create an account by fill up the registration form.
+- User can login with his/her google account.
+- User can add a product.
+- User can Update and Delete any product.
+- User can see details about any product

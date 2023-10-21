@@ -37,9 +37,13 @@ const Products = () => {
                 </figure>
                 <div className="-rotate-6">
                   <p className="text-xl md:text-4xl">0% EMI</p>
-                  <p className="text-base md:text-xl font-medium">Get the Offer Now!</p>
+                  <p className="text-base md:text-xl font-medium">
+                    Get the Offer Now!
+                  </p>
                   <p className="text-xs">With</p>
-                  <p className="text-base md:text-xl font-bold">Exclusive Gift</p>
+                  <p className="text-base md:text-xl font-bold">
+                    Exclusive Gift
+                  </p>
                 </div>
               </div>
               <figure className="w-full h-full">
@@ -70,7 +74,9 @@ const Products = () => {
                   UPTO <span className="text-5xl text-[#FF4A00]">20%</span>
                 </p>
                 <p className="text-2xl">to</p>
-                <p className="text-xl md:text-3xl text-center">All Smart Watches</p>
+                <p className="text-xl md:text-3xl text-center">
+                  All Smart Watches
+                </p>
               </div>
             </div>
           </SwiperSlide>
@@ -81,7 +87,9 @@ const Products = () => {
                   <span className="text-xl md:text-3xl font-bold">
                     <FaApple />
                   </span>
-                  <span className="text-2xl md:text-4xl font-semibol italic">Iphone</span>
+                  <span className="text-2xl md:text-4xl font-semibol italic">
+                    Iphone
+                  </span>
                 </p>
                 <span>Series 13</span>
                 <p className="text-xl md:text-2xl font-medium">Available Now</p>
@@ -95,20 +103,25 @@ const Products = () => {
               </figure>
               <div className="-rotate-12 flex flex-col justify-center">
                 <figure>
-                    <img className="w-80" src="https://previews.123rf.com/images/martialred/martialred1708/martialred170800071/84363440-available-now-label-badge-seal-or-burst-flat-vector-icon-for-apps-and-websites.jpg" />
+                  <img
+                    className="w-80"
+                    src="https://previews.123rf.com/images/martialred/martialred1708/martialred170800071/84363440-available-now-label-badge-seal-or-burst-flat-vector-icon-for-apps-and-websites.jpg"
+                  />
                 </figure>
               </div>
             </div>
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="max-w-2xl mx-auto mb-6 text-center mt-20">
-        <h2 className="text-3xl font-bold">Products</h2>
-        <p className="text-sm md:text-base mt-2">
-          This brief description invites customers to discover the brand&#39;s
-          high-quality products and piques their interest.
-        </p>
-      </div>
+      {loadedProducts.length !== 0 && (
+        <div className="max-w-2xl mx-auto mb-6 text-center mt-20">
+          <h2 className="text-3xl font-bold">Products</h2>
+          <p className="text-sm md:text-base mt-2">
+            This brief description invites customers to discover the brand&#39;s
+            high-quality products and piques their interest.
+          </p>
+        </div>
+      )}
       {loadedProducts.length === 0 ? (
         <p className="max-w-lg mx-auto text-center my-28">
           {

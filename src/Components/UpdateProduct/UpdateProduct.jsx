@@ -24,7 +24,7 @@ const UpdateProduct = () => {
     };
 
     // Post new product to database
-    fetch(`https://techtronix-server-6eijdzc4i-borhan-uddins-projects.vercel.app/products/${brandName}/${_id}`, {
+    fetch(`https://techtronix-server-n5ha8r90r-borhan-uddins-projects.vercel.app/products/${brandName}/${_id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updatedProduct),

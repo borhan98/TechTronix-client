@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
@@ -8,7 +8,8 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const [passError, setPassError] = useState("");
-  const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, updateUser, googleSignIn, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // handle register new user
   const handleRegister = (event) => {
@@ -35,8 +36,7 @@ const Register = () => {
 
     // create user
     createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         toast.success("successfully registered");
         setPassError("");
         updateUser(name, photo)
@@ -44,7 +44,15 @@ const Register = () => {
           .catch((err) => {
             console.log(err);
           });
+        logoutUser()
+        .then(() => {
+          toast('Please login now')
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
         form.reset();
+        navigate("/login");
       })
       .catch((err) => {
         console.error(err);
