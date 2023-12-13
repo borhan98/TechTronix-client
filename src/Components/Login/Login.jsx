@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
@@ -7,9 +7,10 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-  const { loginUser, googleSignIn } = useContext(AuthContext);
+  const { loginUser, googleSignIn, handleResetPass } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const emailRef = useRef();
 
   // handle login user
   const handleLogin = (event) => {
@@ -41,6 +42,29 @@ const Login = () => {
       });
   };
 
+  // Handle forget password
+  const handleForgotPassword = () => {
+    const email = emailRef.current.value;
+    if (!email) {
+      console.log("email de");
+      return;
+    } else if (
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)
+    ) {
+      console.log("valo email de");
+      return;
+    }
+
+    // Handle send reset email
+    handleResetPass(email)
+      .then(() => {
+        toast("please check your email");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="container mx-auto">
       <div className="py-4 md:py-7 lg:py-10 bg-base-200 px-2 md:px-10 lg:px-20">
@@ -58,6 +82,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
+                ref={emailRef}
                 placeholder="Email"
                 className="input input-bordered"
                 required
@@ -69,20 +94,25 @@ const Login = () => {
               </label>
               <div className="relative">
                 <input
-                  type={showPass ? 'text' : 'password'}
+                  type={showPass ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   className="input input-bordered w-full"
                   required
                 />
-                <span onClick={() => setShowPass(!showPass)} className="absolute right-1 top-3 text-xl md:text-2xl">
-                  {
-                    showPass ? <AiFillEyeInvisible /> : <AiFillEye />
-                  }
+                <span
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-1 top-3 text-xl md:text-2xl"
+                >
+                  {showPass ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </span>
               </div>
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a
+                  onClick={handleForgotPassword}
+                  href="#"
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
                 </a>
               </label>
